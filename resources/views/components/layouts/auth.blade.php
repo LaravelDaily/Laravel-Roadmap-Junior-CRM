@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - {{ config('app.name') }}</title>
+    <title>{{ $title }} - {{ config('app.name') }}</title>
     @vite('resources/css/app.css')
     <script>
         function applyTheme() {
@@ -33,8 +33,7 @@
         this.darkMode = !this.darkMode;
         localStorage.setItem('darkMode', this.darkMode);
     }
-}"
-    :class="{ 'dark': darkMode }">
+}" :class="{ 'dark': darkMode }">
 
     <div class="min-h-screen flex flex-col">
         <!-- Main Content -->
