@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Project;
-use App\Models\User;
-use App\Models\Client;
 use App\Enums\ProjectStatus;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
+use App\Models\Client;
+use App\Models\Project;
+use App\Models\User;
 use App\Notifications\ProjectAssigned;
 use Illuminate\Support\Facades\Gate;
 use Symfony\Component\HttpFoundation\Response;
@@ -32,7 +32,7 @@ class ProjectController extends Controller
         return view('projects.create', [
             'users' => $users,
             'clients' => $clients,
-            'statuses' => $statuses
+            'statuses' => $statuses,
         ]);
     }
 
@@ -63,7 +63,7 @@ class ProjectController extends Controller
             'project' => $project,
             'users' => $users,
             'clients' => $clients,
-            'statuses' => $statuses
+            'statuses' => $statuses,
         ]);
     }
 

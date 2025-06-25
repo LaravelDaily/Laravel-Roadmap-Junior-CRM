@@ -3,19 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Enums\TaskStatus;
-use App\Models\User;
+use App\Http\Requests\StoreTaskRequest;
+use App\Http\Requests\UpdateTaskRequest;
+use App\Mail\MailTaskAssigned;
 use App\Models\Client;
 use App\Models\Project;
 use App\Models\Task;
+use App\Models\User;
+use App\Notifications\TaskAssigned;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use App\Http\Requests\StoreTaskRequest;
-use App\Http\Requests\UpdateTaskRequest;
-use App\Notifications\TaskAssigned;
-use Illuminate\Support\Facades\Mail;
-use App\Mail\MailTaskAssigned;
-use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Mail;
 
 class TaskController extends Controller
 {
@@ -39,7 +39,7 @@ class TaskController extends Controller
             'users' => $users,
             'clients' => $clients,
             'projects' => $projects,
-            'statuses' => $statuses
+            'statuses' => $statuses,
         ]);
     }
 
@@ -73,7 +73,7 @@ class TaskController extends Controller
             'users' => $users,
             'clients' => $clients,
             'projects' => $projects,
-            'statuses' => $statuses
+            'statuses' => $statuses,
         ]);
     }
 

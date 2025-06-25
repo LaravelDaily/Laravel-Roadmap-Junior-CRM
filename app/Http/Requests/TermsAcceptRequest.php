@@ -22,7 +22,7 @@ class TermsAcceptRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'accept_terms' => ['required', 'boolean']
+            'accept_terms' => ['required', 'boolean'],
         ];
     }
 }

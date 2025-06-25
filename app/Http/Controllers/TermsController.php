@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Http\Requests\TermsAcceptRequest;
 
 class TermsController extends Controller
@@ -15,7 +14,7 @@ class TermsController extends Controller
     public function store(TermsAcceptRequest $request)
     {
         auth()->user()->update([
-            'terms_accepted_at' => now()
+            'terms_accepted_at' => now(),
         ]);
 
         return redirect()->route('dashboard');

@@ -4,7 +4,6 @@ namespace App\Mail;
 
 use App\Models\Task;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
@@ -41,7 +40,7 @@ class MailTaskAssigned extends Mailable
             markdown: 'emails.task-assigned',
             with: [
                 'title' => $this->task->title,
-                'url' => route('tasks.show', $this->task->id)
+                'url' => route('tasks.show', $this->task->id),
             ],
         );
     }

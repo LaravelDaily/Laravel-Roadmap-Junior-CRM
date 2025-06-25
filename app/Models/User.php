@@ -11,14 +11,15 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Spatie\Permission\Traits\HasRoles;
 use Laravel\Sanctum\HasApiTokens;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
+    use HasApiTokens;
+
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory;
-    use HasApiTokens;
     use HasRoles;
     use Notifiable;
     use SoftDeletes;
@@ -53,17 +54,17 @@ class User extends Authenticatable implements MustVerifyEmail
             ->substr(0, 1)
             ->upper()
             ->toString()
-            . '' .
+            .''.
             str($this->last_name)
-            ->substr(0, 1)
-            ->upper()
-            ->toString();
+                ->substr(0, 1)
+                ->upper()
+                ->toString();
     }
 
     public function fullName(): Attribute
     {
         return new Attribute(
-            get: fn() => $this->first_name . ' ' . $this->last_name,
+            get: fn () => $this->first_name.' '.$this->last_name,
         );
     }
 

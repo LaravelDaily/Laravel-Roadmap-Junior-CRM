@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Http\Requests\UploadFileRequest;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
@@ -10,11 +9,11 @@ class MediaController extends Controller
 {
     public function store(UploadFileRequest $request, $model, $id)
     {
-        $upload = app('App\\Models\\' . $model)::find($id);
+        $upload = app('App\\Models\\'.$model)::find($id);
 
         $upload->addMedia($request->file)->toMediaCollection('default', 'local');
 
-        return redirect()->route(strtolower($model) . 's.edit', $id);
+        return redirect()->route(strtolower($model).'s.edit', $id);
     }
 
     public function download(Media $mediaItem)
@@ -26,6 +25,6 @@ class MediaController extends Controller
     {
         $mediaItem->delete();
 
-        return redirect()->route(strtolower($model) . 's.edit', $id);
+        return redirect()->route(strtolower($model).'s.edit', $id);
     }
 }

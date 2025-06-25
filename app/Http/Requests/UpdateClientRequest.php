@@ -23,7 +23,7 @@ class UpdateClientRequest extends FormRequest
     {
         return [
             'contact_name' => ['required', 'string', 'max:255'],
-            'contact_email' => ['required', 'email', 'unique:clients,contact_email,' . $this->client->id],
+            'contact_email' => ['required', 'email', 'unique:clients,contact_email,'.$this->client->id],
             'contact_phone_number' => ['required', 'string', 'max:255'],
             'company_name' => ['required', 'string', 'max:255'],
             'company_address' => ['required', 'string', 'max:255'],
