@@ -15,7 +15,7 @@ class TermsAccepted
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (! auth()->user()->terms_accepted_at && ! $request->is('terms*')) {
+        if (auth()->check() && ! auth()->user()->terms_accepted_at && ! $request->is('terms*')) {
             return redirect()->route('terms.index');
         }
 
