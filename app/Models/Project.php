@@ -34,13 +34,16 @@ class Project extends Model implements HasMedia
     {
         return [
             'status' => ProjectStatus::class,
+            'deadline' => 'datetime',
         ];
     }
 
     #[Scope]
-    public function filterStatus(Builder $query, ProjectStatus $status): Builder
+    public function filterStatus(Builder $query, ?ProjectStatus $status = null): Builder
     {
-        return $query->where('status', $status);
+        return $query->when($status, function ($query, $status) {
+            return $query->where('status', $status);
+        });
     }
 
     public function client(): BelongsTo
