@@ -14,6 +14,8 @@
                 @endcan
                 <x-layouts.sidebar-link href="{{ route('clients.index') }}" icon='fas-building'
                     :active="request()->routeIs('clients*')">Clients</x-layouts.sidebar-link>
+                <x-layouts.sidebar-link href="{{ route('tasks.index') }}" icon='fas-tasks'
+                    :active="request()->routeIs('tasks*')">Tasks</x-layouts.sidebar-link>
 
 
                 <!-- Example two level -->

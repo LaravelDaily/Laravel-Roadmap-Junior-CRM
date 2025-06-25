@@ -31,7 +31,7 @@ class ClientController extends Controller
     {
         Client::create($request->validated());
 
-        return redirect()->route('clients.index');
+        return redirect()->route('clients.index')->with('status', 'Client created successfully');
     }
 
     public function edit(Client $client): View
@@ -45,7 +45,7 @@ class ClientController extends Controller
     {
         $client->update($request->validated());
 
-        return redirect()->route('clients.index');
+        return redirect()->route('clients.index')->with('status', 'Client updated successfully');
     }
 
     public function destroy(Client $client): RedirectResponse
@@ -60,6 +60,6 @@ class ClientController extends Controller
             }
         }
 
-        return redirect()->route('clients.index');
+        return redirect()->route('clients.index')->with('status', 'Client deleted successfully');
     }
 }
