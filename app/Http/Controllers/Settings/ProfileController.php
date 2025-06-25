@@ -24,7 +24,8 @@ class ProfileController extends Controller
         $user = $request->user();
 
         $validated = $request->validate([
-            'name' => ['required', 'string', 'max:255'],
+            'first_name' => ['required', 'string', 'max:255'],
+            'last_name' => ['required', 'string', 'max:255'],
             'email' => [
                 'required',
                 'string',
@@ -48,7 +49,7 @@ class ProfileController extends Controller
 
     public function destroy(Request $request): RedirectResponse
     {
-        $user = $request->user();
+        $user = auth()->user();
 
         Auth::logout();
 
@@ -57,6 +58,6 @@ class ProfileController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return to_route('home');
+        return to_route('login');
     }
 }

@@ -1,4 +1,4 @@
-<x-layouts.auth>
+<x-layouts.auth title="Register">
     <div
         class="bg-white dark:bg-gray-800 rounded-lg shadow-md border border-gray-200 dark:border-gray-700 overflow-hidden">
         <div class="p-6">
@@ -13,7 +13,12 @@
                 @csrf
                 <!-- Full Name Input -->
                 <div class="mb-4">
-                    <x-forms.input label="Full Name" name="name" type="text" placeholder="{{ __('Full Name') }}" />
+                    <x-forms.input label="First Name" name="first_name" type="text"
+                        placeholder="{{ __('First Name') }}" />
+                </div>
+
+                <div class="mb-4">
+                    <x-forms.input label="Last Name" name="last_name" type="text" placeholder="{{ __('Last Name') }}" />
                 </div>
 
                 <!-- Email Input -->

@@ -37,8 +37,13 @@
                             @csrf
                             @method('PUT')
                             <div class="mb-4">
-                                <x-forms.input label="Name" name="name" type="text"
-                                    value="{{ old('name', $user->name) }}" />
+                                <x-forms.input label="First Name" name="first_name" type="text"
+                                    value="{{ old('first_name', $user->first_name) }}" />
+                            </div>
+
+                            <div class="mb-4">
+                                <x-forms.input label="Last Name" name="last_name" type="text"
+                                    value="{{ old('last_name', $user->last_name) }}" />
                             </div>
 
                             <div class="mb-6">
