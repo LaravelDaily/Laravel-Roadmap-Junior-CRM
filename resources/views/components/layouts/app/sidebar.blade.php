@@ -8,8 +8,13 @@
                 <!-- Dashboard -->
                 <x-layouts.sidebar-link href="{{ route('dashboard') }}" icon='fas-house'
                     :active="request()->routeIs('dashboard*')">Dashboard</x-layouts.sidebar-link>
-                <x-layouts.sidebar-link href="{{ route('users.index') }}" icon='fas-users'
-                    :active="request()->routeIs('users*')">Users</x-layouts.sidebar-link>
+                @can('manage users')
+                    <x-layouts.sidebar-link href="{{ route('users.index') }}" icon='fas-users'
+                        :active="request()->routeIs('users*')">Users</x-layouts.sidebar-link>
+                @endcan
+                <x-layouts.sidebar-link href="{{ route('clients.index') }}" icon='fas-building'
+                    :active="request()->routeIs('clients*')">Clients</x-layouts.sidebar-link>
+
 
                 <!-- Example two level -->
                 <x-layouts.sidebar-two-level-link-parent title="Example two level" icon="fas-house"
