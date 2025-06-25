@@ -41,6 +41,10 @@ Route::middleware(['auth'])->group(function () {
         Route::get('{mediaItem}/download', [MediaController::class, 'download'])->name('download');
         Route::delete('{model}/{id}/{mediaItem}/delete', [MediaController::class, 'destroy'])->name('delete');
     });
+
+    Route::get('token', function () {
+        return auth()->user()->createToken('crm')->plainTextToken;
+    });
 });
 
 require __DIR__ . '/auth.php';
