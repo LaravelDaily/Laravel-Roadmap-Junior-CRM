@@ -7,6 +7,7 @@ use App\Http\Controllers\TaskController;
 use App\Http\Controllers\TermsController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\MediaController;
 use Illuminate\Support\Facades\Route;
 
 Route::permanentRedirect('/', '/login');
@@ -34,6 +35,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('notifications', [NotificationController::class, 'index'])->name('notifications.index');
     Route::put('notifications/{notification}', [NotificationController::class, 'update'])->name('notifications.update');
     Route::delete('notifications', [NotificationController::class, 'destroy'])->name('notifications.destroy');
+
+    Route::group(['prefix' => 'media', 'as' => 'media.'], function () {
+        Route::post('{model}/{id}/upload', [MediaController::class, 'store'])->name('upload');
+        Route::get('{mediaItem}/download', [MediaController::class, 'download'])->name('download');
+        Route::delete('{model}/{id}/{mediaItem}/delete', [MediaController::class, 'destroy'])->name('delete');
+    });
 });
 
 require __DIR__ . '/auth.php';

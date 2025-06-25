@@ -274,11 +274,11 @@
                                         <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Project Status</p>
                                         <span
                                             class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium
-                                                @if($task->project->status->value === 'planning') bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200
-                                                @elseif($task->project->status->value === 'in_progress') bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200
-                                                @elseif($task->project->status->value === 'completed') bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200
-                                                @elseif($task->project->status->value === 'on_hold') bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200
-                                                @else bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200 @endif">
+                                                        @if($task->project->status->value === 'planning') bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200
+                                                        @elseif($task->project->status->value === 'in_progress') bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200
+                                                        @elseif($task->project->status->value === 'completed') bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200
+                                                        @elseif($task->project->status->value === 'on_hold') bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200
+                                                        @else bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200 @endif">
                                             {{ ucfirst($task->project->status->label()) }}
                                         </span>
                                     </div>
@@ -329,4 +329,63 @@
             @endif
         </div>
     </div>
+
+    <!-- Media Files Section -->
+    @if($task->getMedia()->count() > 0)
+        <div class="mt-6">
+            <div
+                class="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden">
+                <div class="px-6 py-4 bg-gray-50 dark:bg-gray-600 border-b border-gray-200 dark:border-gray-500">
+                    <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200 flex items-center">
+                        <svg class="w-5 h-5 mr-2 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13">
+                            </path>
+                        </svg>
+                        Task Files
+                    </h3>
+                </div>
+                <div class="p-6">
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+                            <thead class="bg-gray-50 dark:bg-gray-700">
+                                <tr>
+                                    <th scope="col"
+                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                                        File name
+                                    </th>
+                                    <th scope="col"
+                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                                        Size
+                                    </th>
+                                    <th scope="col"
+                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                                        Actions
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
+                                @foreach($task->getMedia() as $media)
+                                    <tr class="hover:bg-gray-50 dark:hover:bg-gray-600">
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">
+                                            {{ $media->file_name }}
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">
+                                            {{ $media->human_readable_size }}
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                            <a href="{{ route('media.download', $media) }}"
+                                                class="text-blue-600 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300">
+                                                Download
+                                            </a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
 </x-layouts.app>
