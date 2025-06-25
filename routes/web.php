@@ -26,7 +26,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('projects', ProjectController::class);
     Route::resource('tasks', TaskController::class);
     Route::resource('clients', ClientController::class);
-    Route::resource('users', UserController::class);
+    Route::resource('users', UserController::class)->middleware('role:admin');
 
     Route::get('terms', [TermsController::class, 'index'])->name('terms.index');
     Route::post('terms', [TermsController::class, 'store'])->name('terms.store');
