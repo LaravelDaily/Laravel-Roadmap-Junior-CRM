@@ -107,7 +107,8 @@
                                 </div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">
-                                <div class="text-sm text-gray-900 dark:text-gray-100">{{ $task->deadline }}</div>
+                                <div class="text-sm text-gray-900 dark:text-gray-100">{{ $task->deadline->format('Y-m-d') }}
+                                </div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                 <div class="flex justify-end space-x-2">
@@ -125,7 +126,7 @@
                                             @csrf
                                             @method('DELETE')
                                             <button class=" text-red-600 hover:text-red-900 dark:text-red-400
-                                                                                            dark:hover:text-red-300">
+                                                                                                    dark:hover:text-red-300">
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
                                                     viewBox="0 0 24 24" stroke="currentColor">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
