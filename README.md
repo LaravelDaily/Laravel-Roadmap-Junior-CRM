@@ -1,3 +1,17 @@
+## Screenshots
+
+Login Page
+
+![](https://laraveldaily.com/uploads/2025/06/roadmap-crm-login.png)
+
+Users List
+
+![](https://laraveldaily.com/uploads/2025/06/roadmap-crm-users-list.png)
+
+Project View
+
+![](https://laraveldaily.com/uploads/2025/06/roadmap-crm-project-view.png)
+
 ## Advanced Beginner Level
 
 The goal of this level is to find the first job or freelance gig
